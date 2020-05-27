@@ -69,8 +69,45 @@ public class Logic {
     }
 
     public boolean isWin() {
-        int[][] table = this.convert();
+        int [][] table = this.convert();
         boolean result = false;
+        int[] combi = extractDiagonal(table);
+        for (int i = 0; i < combi.length; i++) {
+            boolean horizontal = monoHorizontal(table, i);
+            boolean vertical = monoVertical(table, i);
+            if ((combi[i] == 1) && ((horizontal == true) || (vertical == true))) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static int[] extractDiagonal(int[][] board) {
+        int[] rsl = new int[board.length];
+        for (int i = 0; i < rsl.length; i++) {
+            rsl[i] = board[i][i];
+        }
+        return rsl;
+    }
+    public static boolean monoHorizontal(int[][] board, int row) {
+        boolean result = true;
+        for (int j = 0; j < board.length; j++) {
+            if (board[row][j] != 1) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+    public static boolean monoVertical(int[][] board, int column) {
+        boolean result = true;
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][column] != 1) {
+                result = false;
+                break;
+            }
+        }
         return result;
     }
 
