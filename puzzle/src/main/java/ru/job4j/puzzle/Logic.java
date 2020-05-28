@@ -73,9 +73,7 @@ public class Logic {
         boolean result = false;
         int[] combi = extractDiagonal(table);
         for (int i = 0; i < combi.length; i++) {
-            boolean horizontal = monoHorizontal(table, i);
-            boolean vertical = monoVertical(table, i);
-            if ((combi[i] == 1) && ((horizontal == true) || (vertical == true))) {
+            if ((combi[i] == 1) && ((monoHorizontal(table, i)) || (monoVertical(table, i)))) {
                 result = true;
                 break;
             }
