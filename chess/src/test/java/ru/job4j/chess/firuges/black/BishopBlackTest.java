@@ -34,8 +34,10 @@ public class BishopBlackTest extends TestCase {
     @Test
     public void testIsDiagonal() {
         BishopBlack bishopBlack = new BishopBlack(Cell.C1);
-        Figure carentPosition = bishopBlack.copy(Cell.G5);
-        boolean isCorectDiagonal = BishopBlack.isDiagonal(bishopBlack.position(), (Cell) carentPosition.position());
+        Cell source = bishopBlack.position();
+        Cell dest = Cell.G5;
+        //Figure carentPosition = bishopBlack.copy(Cell.G5);
+        boolean isCorectDiagonal = BishopBlack.isDiagonal(source, dest);
         //assertArrayEquals(BishopBlack.isDiagonal(bishopBlack.position(), carentPosition)); is("G5"));
     }
 }
