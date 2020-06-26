@@ -4,7 +4,6 @@ import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 /**
  * //TODO add comments.
@@ -27,10 +26,7 @@ public class Logic {
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
             if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-                for (int i = 0; i < steps.length; i++) {
-                    if (findBy(steps[i]) != -1) {
-                        break;
-                    }
+                if (freePathc(steps)) {
                     rst = true;
                     this.figures[index] = this.figures[index].copy(dest);
                 }
@@ -62,5 +58,16 @@ public class Logic {
         return "Logic{" +
                 "figures=" + Arrays.toString(this.figures) +
                 '}';
+    }
+
+    public boolean freePathc(Cell[] steps) {
+        boolean rst = false;
+        for (int i = 0; i < steps.length; i++) {
+            if (findBy(steps[i]) != -1) {
+                return rst;
+            }
+        }
+        rst = true;
+        return rst;
     }
 }
