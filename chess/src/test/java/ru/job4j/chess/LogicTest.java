@@ -26,7 +26,6 @@ public class LogicTest {
         Logic logic = new Logic();
         logic.add(new PawnBlack(Cell.C7));
         logic.add(new BishopBlack(Cell.C8));
-
         boolean rsl = logic.move(Cell.C8, Cell.F5);
         assertThat(rsl, is(true));
     }

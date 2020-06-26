@@ -28,14 +28,12 @@ public class Logic {
             Cell[] steps = this.figures[index].way(source, dest);
             if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
                 for (int i = 0; i < steps.length; i++) {
-                    for (int g = 0; g < figures.length; g++) {
-                        if (steps[i].ordinal() == this.figures[g].position().ordinal()) {
-                            return rst;
-                        }
+                    if (findBy(steps[i]) != -1) {
+                        break;
                     }
+                    rst = true;
+                    this.figures[index] = this.figures[index].copy(dest);
                 }
-                rst = true;
-                this.figures[index] = this.figures[index].copy(dest);
             }
         }
         return rst;
