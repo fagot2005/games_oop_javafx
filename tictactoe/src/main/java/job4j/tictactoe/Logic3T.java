@@ -25,34 +25,44 @@ public class Logic3T {
     }
 
     public boolean isWinnerX() {
-        return this.fillBy(isWin(), 0, 0, 1, 0) ||
-                this.fillBy(Figure3T::hasMarkX, 0, 1, 1, 1) ||
-                this.fillBy(Figure3T::hasMarkX, 0, 2, 1, 1) ||
-
-                this.fillBy(Figure3T::hasMarkX, 0,0, 0, 1) ||
-                this.fillBy(Figure3T::hasMarkX, 1,0, 1, 1) ||
-                this.fillBy(Figure3T::hasMarkX, 2, 0, 1, 1) ||
-
-                this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 1) ||
-                this.fillBy(Figure3T::hasMarkX, 2, 0, -1, 1);
+        return isWin(Figure3T::hasMarkX);
+//        this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 0) ||
+//                this.fillBy(Figure3T::hasMarkX, 0, 1, 1, 0) ||
+//                this.fillBy(Figure3T::hasMarkX, 0, 2, 1, 0) ||
+//
+//                this.fillBy(Figure3T::hasMarkX, 0,0, 0, 1) ||
+//                this.fillBy(Figure3T::hasMarkX, 1,0, 0, 1) ||
+//                this.fillBy(Figure3T::hasMarkX, 2, 0, 0, 1) ||
+//
+//                this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 1) ||
+//                this.fillBy(Figure3T::hasMarkX, 2, 0, -1, 1);
     }
 
     public boolean isWinnerO() {
-        return this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0) ||
-                this.fillBy(Figure3T::hasMarkO, 0,1, 1, 1) ||
-                this.fillBy(Figure3T::hasMarkO, 0, 2, 1, 1) ||
-
-                this.fillBy(Figure3T::hasMarkO, 0,0, 0, 1) ||
-                this.fillBy(Figure3T::hasMarkO, 1,0, 1, 1) ||
-                this.fillBy(Figure3T::hasMarkO, 2,0, 1, 1) ||
-
-                this.fillBy(Figure3T::hasMarkO, 0,0, 1, 1) ||
-                this.fillBy(Figure3T::hasMarkO, 2,0, -1, 1);
+        return isWin(Figure3T::hasMarkO);
+//        this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0) ||
+//                this.fillBy(Figure3T::hasMarkO, 0,1, 1, 0) ||
+//                this.fillBy(Figure3T::hasMarkO, 0, 2, 1, 0) ||
+//
+//                this.fillBy(Figure3T::hasMarkO, 0,0, 0, 1) ||
+//                this.fillBy(Figure3T::hasMarkO, 1,0, 0, 1) ||
+//                this.fillBy(Figure3T::hasMarkO, 2,0, 0, 1) ||
+//
+//                this.fillBy(Figure3T::hasMarkO, 0,0, 1, 1) ||
+//                this.fillBy(Figure3T::hasMarkO, 2,0, -1, 1);
     }
 
     public boolean isWin(Predicate<Figure3T> predicate) {
-        return Figure3T::hasMarkX;
+        this.fillBy(predicate, 0, 0, 1, 0) ||
+                this.fillBy(predicate, 0,1, 1, 0) ||
+                this.fillBy(predicate, 0, 2, 1, 0) ||
 
+                this.fillBy(predicate, 0,0, 0, 1) ||
+                this.fillBy(predicate, 1,0, 0, 1) ||
+                this.fillBy(predicate, 2,0, 0, 1) ||
+
+                this.fillBy(predicate, 0,0, 1, 1) ||
+                this.fillBy(predicate, 2,0, -1, 1);
     }
 
     public boolean hasGap() {
